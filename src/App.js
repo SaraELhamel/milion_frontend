@@ -38,7 +38,7 @@ function App() {
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/admin" component={SignInadmin} />
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/dashboard" exact component={Dashboard} />
             <Route path="/dashboardpart" component={Dashboard1} />
             <Route path="/groupe" component={Group} />
             <Route path="/game" component={Game} />

@@ -1,22 +1,24 @@
 import React, { Component } from "react";
 import {useForm} from 'react-hook-form'
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import axios from 'axios'
 
 
 
 export default function SignUp () {
+    const history = useHistory()
     const {register,handleSubmit} = useForm()
     async function onSubmit(data){
-        // console.log(data);
-         axios.post('http://localhost:3000/participant/addpartic',data)
+        
+         axios.post(process.env.REACT_APP_URL+'participant/addpartic',data)
          .then(response=>{
             
             console.log(response)
+            history.push('/sign-in')
             })
         .catch(err=>console.log(err))
     }
-    // render() {
+    
         return (
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h3>Sign Up</h3>

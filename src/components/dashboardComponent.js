@@ -8,10 +8,10 @@ import '../App.css';
 
 export default function Dashboard() {
     
-   
+   console.log(process.env.REACT_APP_URL)
     const [data,setData] = React.useState([])
     React.useEffect(async() => {
-        const res = await axios.get('http://localhost:3000/admin/alladmin')
+        const res = await axios.get(process.env.REACT_APP_URL+'admin/alladmin')
         setData(res.data)
         return () => {
             // cleanup

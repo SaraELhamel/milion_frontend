@@ -1,20 +1,21 @@
 import React, { Component } from "react";
 import {useForm} from 'react-hook-form'
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 
 import axios from 'axios'
 
 
 
 export default function Login () {
-   
+   const history = useHistory()
     const {register,handleSubmit} = useForm()
     async function onSubmit(data){
         
-         axios.post('http://localhost:3000/admin/signinadmin',data)
+         axios.post(process.env.REACT_APP_URL+'admin/signinadmin',data)
          .then(response=>{
             
             console.log(response)
+            history.push('/dashboard')
             })
         .catch(err=>console.log(err))
     }

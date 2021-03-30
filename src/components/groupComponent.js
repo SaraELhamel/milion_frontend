@@ -1,4 +1,4 @@
-
+import { Link ,useHistory} from "react-router-dom";
 import {useForm} from 'react-hook-form'
 
 
@@ -7,14 +7,15 @@ import axios from 'axios'
 
 
 export default function Group () {
-   
+    const history = useHistory()
     const {register,handleSubmit} = useForm()
     async function onSubmit(data){
         
-         axios.post('http://localhost:3000/groupe/addgroup',data)
+         axios.post(process.env.REACT_APP_URL+'groupe/addgroup',data)
          .then(response=>{
             
             console.log(response)
+            history.push('/game')
             })
         .catch(err=>console.log(err))
     }

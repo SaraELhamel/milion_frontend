@@ -11,7 +11,7 @@ export default function Dashboard1() {
    
     const [data,setData] = React.useState([])
     React.useEffect(async() => {
-        const res = await axios.get('http://localhost:3000/participant/all')
+        const res = await axios.get(process.env.REACT_APP_URL+'participant/all')
         setData(res.data)
         return () => {
             // cleanup
@@ -37,6 +37,7 @@ export default function Dashboard1() {
             </table>   
           
             <Link to={"/dashboard"}>main dashboard</Link>
+           
         </div>
       
     );
